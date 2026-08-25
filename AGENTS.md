@@ -10,6 +10,8 @@ Instructions in this file apply to the entire repository.
 
 - `README.md` is the short index and scope statement.
 - `PROJECT_AGENT_CONTEXT.md` records this repository's own verified commands, public boundary, and release process.
+- `MAINTAINER_MEMORY.md` indexes accepted public maintenance lessons; it is advisory and does not override instructions or current project facts.
+- `docs/decisions/` records consequential maintenance decisions and their supersession history.
 - `docs/principles.md` owns universal scope, evidence, and restraint rules.
 - `docs/audit-and-priorities.md` owns audit coverage and prioritization.
 - `docs/public-interface.md` owns repository metadata and community surfaces.
@@ -40,6 +42,8 @@ Put each rule in one primary document. Link to it elsewhere instead of maintaini
 
 Before editing, read `README.md`, `PROJECT_AGENT_CONTEXT.md`, the target document, and any document that links to the section being changed. Search for duplicates and contradictory wording.
 
+For substantive changes, also read `MAINTAINER_MEMORY.md` and only the decision records relevant to the task. Do not load the full decision history mechanically.
+
 For substantive changes:
 
 1. State the cross-project problem the rule solves.
@@ -47,6 +51,16 @@ For substantive changes:
 3. Update affected checklists, templates, links, and adoption guidance.
 4. Review the result from both perspectives: an agent applying the playbook and a maintainer adopting it.
 5. Keep unrelated user changes intact.
+
+## Maintainer memory and decisions
+
+- Keep all shared memory public-safe, concise, evidence-backed, and useful across future tasks.
+- Do not store backlog items, release history, raw conversations, private preferences, local paths, credentials, personal data, or sensitive reports in maintainer memory.
+- An agent may update `MAINTAINER_MEMORY.md` during authorized repository work, but must surface the exact diff in its handoff. Background or self-triggered promotion is not allowed.
+- Learned memory never silently changes `AGENTS.md`, `CLAUDE.md`, or another instruction file. Instruction changes require an explicit, reviewable patch within the authorized task.
+- Create a new decision file for consequential changes to authority, safety boundaries, adoption defaults, source-of-truth ownership, or repository-wide architecture.
+- Keep accepted decision records substantively immutable. Reverse one with a new record that supersedes it.
+- Consequential memory, decision, and instruction changes require human maintainer review. Automated checks provide evidence; they do not grant approval or merge authority.
 
 ## Verification
 

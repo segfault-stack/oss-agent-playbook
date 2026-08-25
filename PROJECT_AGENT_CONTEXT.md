@@ -44,6 +44,8 @@ This repository dogfoods the OSS Agent Playbook directly: its root documents are
 - Universal guidance lives in `docs/`; ecosystem guidance lives in `profiles/`.
 - The repository uses its own root `AGENTS.md` and `CLAUDE.md` instead of importing itself recursively.
 - Empty Discussions, Wiki, and Projects remain disabled until an owner and active use case exist.
+- Shared maintainer memory is public, Git-tracked, and advisory. `MAINTAINER_MEMORY.md` indexes accepted lessons; `docs/decisions/` owns consequential decision history.
+- Agents may prepare changes, but a human maintainer reads consequential instruction, memory, and decision changes before acceptance. The current maintainer group has one person; any future group is expected to remain small and accountable.
 
 ## Playbook source
 
