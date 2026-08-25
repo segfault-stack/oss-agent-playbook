@@ -31,7 +31,9 @@ This repository dogfoods the OSS Agent Playbook directly: its root documents are
 - Default branch: `main`.
 - Merge policy: reviewed, focused changes with the documentation check passing.
 - Version source: annotated Git tags using semantic versioning.
-- Release workflow: verify local and remote commit identity, create an annotated tag, push branch and tag, then publish GitHub release notes.
+- Release workflow: choose the version, update versioned examples, search for stale release
+  pins, verify local and remote commit identity, create an annotated tag, push branch and
+  tag, then publish GitHub release notes.
 - Artifacts: source tree and GitHub-generated source archives; no executable release artifacts.
 - Rollback: revert the focused change; never move a published version tag silently.
 

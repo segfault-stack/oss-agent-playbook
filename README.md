@@ -44,7 +44,7 @@ Import an immutable release into the target repository. A squashed subtree is th
 git subtree add \
   --prefix=.agent/oss-playbook \
   https://github.com/segfault-stack/oss-agent-playbook.git \
-  v0.2.1 \
+  v0.3.1 \
   --squash
 ```
 
