@@ -105,3 +105,9 @@ If no automated documentation checks exist, say so in the handoff rather than cl
 ## Writing style
 
 Write concise English intended for agents and maintainers. Use short sections, explicit conditions, and imperative language. Define uncommon terms on first use. Avoid marketing copy, badge walls, decorative diagrams, and framework-specific tutorials.
+
+Report state only when it affects the outcome, the next action, or a maintainer decision.
+Do not present an expected intermediate state, such as a local branch being ahead after an
+authorized commit, as a warning or blocker. When the user has authorized the remaining
+steps and no real constraint intervenes, continue the workflow and report the completed
+outcome in plain language.
