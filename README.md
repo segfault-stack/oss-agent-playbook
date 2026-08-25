@@ -3,8 +3,6 @@
 Reusable, technology-neutral instructions for AI agents that publish and maintain trustworthy open-source repositories.
 
 [![Documentation](https://github.com/segfault-stack/oss-agent-playbook/actions/workflows/docs.yml/badge.svg)](https://github.com/segfault-stack/oss-agent-playbook/actions/workflows/docs.yml)
-[![Release](https://img.shields.io/github/v/release/segfault-stack/oss-agent-playbook)](https://github.com/segfault-stack/oss-agent-playbook/releases)
-[![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](LICENSE)
 
 **Status:** pre-1.0 and evolving. Pin an exact release or commit when adopting it. Until `1.0.0`, minor releases may revise guidance or integration files incompatibly.
 
@@ -46,7 +44,7 @@ Import an immutable release into the target repository. A squashed subtree is th
 git subtree add \
   --prefix=.agent/oss-playbook \
   https://github.com/segfault-stack/oss-agent-playbook.git \
-  v0.2.0 \
+  v0.2.1 \
   --squash
 ```
 
