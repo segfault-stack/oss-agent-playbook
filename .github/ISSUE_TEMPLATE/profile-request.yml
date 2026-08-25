@@ -1,0 +1,41 @@
+name: Technology profile request
+description: Propose reusable guidance for an ecosystem such as Python, Go, or Docker.
+title: "[Profile]: "
+labels:
+  - profile
+body:
+  - type: input
+    id: ecosystem
+    attributes:
+      label: Ecosystem
+      placeholder: Python packaging
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Cross-project scope
+      description: Explain which recurring decisions the profile should specialize and what it should not own.
+    validations:
+      required: true
+  - type: textarea
+    id: projects
+    attributes:
+      label: Representative projects or scenarios
+      description: Show that the guidance applies beyond one repository.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Primary official sources
+      description: Link current ecosystem documentation, standards, or specifications.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-data check
+      options:
+        - label: I removed credentials, private data, and confidential logs from this request.
+          required: true

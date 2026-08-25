@@ -9,6 +9,7 @@ Instructions in this file apply to the entire repository.
 ## Sources of truth
 
 - `README.md` is the short index and scope statement.
+- `PROJECT_AGENT_CONTEXT.md` records this repository's own verified commands, public boundary, and release process.
 - `docs/principles.md` owns universal scope, evidence, and restraint rules.
 - `docs/audit-and-priorities.md` owns audit coverage and prioritization.
 - `docs/public-interface.md` owns repository metadata and community surfaces.
@@ -19,6 +20,7 @@ Instructions in this file apply to the entire repository.
 - `docs/checklists.md` summarizes other documents; it must not introduce new requirements.
 - `ADOPTION.md` and `templates/` define how consumer repositories use the playbook.
 - `profiles/` contains optional technology overlays and its own maintenance instructions.
+- `CONTRIBUTING.md`, `SUPPORT.md`, and `SECURITY.md` own the contributor, support, and sensitive-reporting boundaries.
 
 Put each rule in one primary document. Link to it elsewhere instead of maintaining paraphrased copies. If a summary must repeat a rule, update both locations in the same change.
 
@@ -36,7 +38,7 @@ Put each rule in one primary document. Link to it elsewhere instead of maintaini
 
 ## Change workflow
 
-Before editing, read `README.md`, the target document, and any document that links to the section being changed. Search for duplicates and contradictory wording.
+Before editing, read `README.md`, `PROJECT_AGENT_CONTEXT.md`, the target document, and any document that links to the section being changed. Search for duplicates and contradictory wording.
 
 For substantive changes:
 

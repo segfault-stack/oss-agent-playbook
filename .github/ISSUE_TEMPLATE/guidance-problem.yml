@@ -1,0 +1,45 @@
+name: Guidance problem
+description: Report unclear, outdated, contradictory, or unsafe playbook guidance.
+title: "[Guidance]: "
+labels:
+  - documentation
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, private logs, personal data, or confidential repository content. Report exploitable security issues privately through the Security tab.
+  - type: input
+    id: location
+    attributes:
+      label: Affected document
+      description: Link to the file and section, if known.
+      placeholder: docs/agent-workflow.md — Authorization boundary
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Explain what is unclear, inaccurate, contradictory, or unsafe.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Cross-project impact
+      description: Describe which agents, maintainers, or repository types are affected.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or proposed correction
+      description: Prefer primary official sources for time-sensitive claims.
+    validations:
+      required: false
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-data check
+      options:
+        - label: I removed credentials, private data, and confidential logs from this report.
+          required: true
