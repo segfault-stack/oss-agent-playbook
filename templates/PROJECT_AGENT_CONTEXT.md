@@ -42,10 +42,17 @@ State prerequisites and identify checks that require network access, credentials
 - Artifact integrity policy:
 - Deployment boundary and rollback path:
 
-## Enabled playbook profiles
+## Playbook profiles
 
-List only profiles present under `.agent/oss-playbook/profiles/` that apply to this project. Profiles specialize core guidance and should be loaded only for relevant tasks. Replace `none` with profile IDs such as `python` and `docker`.
+Record availability and selection separately. For `Available profiles`, list profile IDs
+that actually exist under `.agent/oss-playbook/profiles/` in the pinned revision; ignore
+`_template/`. For `Enabled profiles`, list only available profiles selected by this
+project. Use `none` when a list is empty.
 
+Call an absent profile unavailable, never disabled or not enabled. Report an enabled but
+unavailable profile as a context error.
+
+- Available profiles: `none`
 - Enabled profiles: `none`
 
 ## Project-specific decisions

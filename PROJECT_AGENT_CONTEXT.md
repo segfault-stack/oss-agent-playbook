@@ -45,8 +45,9 @@ This repository dogfoods the OSS Agent Playbook directly: its root documents are
 - Artifacts: source tree and GitHub-generated source archives; no executable release artifacts.
 - Rollback: revert the focused change; never move a published version tag silently.
 
-## Enabled playbook profiles
+## Playbook profiles
 
+- Available profiles: `none`
 - Enabled profiles: `none`
 
 ## Project-specific decisions

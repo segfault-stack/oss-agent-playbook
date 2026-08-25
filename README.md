@@ -109,7 +109,7 @@ After either import, merge these templates into the target repository root:
   vendor-neutral routing;
 - `.agent/oss-playbook/templates/CLAUDE.consumer.md` as `CLAUDE.md` for Claude Code;
 - `.agent/oss-playbook/templates/PROJECT_AGENT_CONTEXT.md` as
-  `PROJECT_AGENT_CONTEXT.md` for verified project facts and enabled profiles.
+  `PROJECT_AGENT_CONTEXT.md` for verified project facts and available and enabled profiles.
 
 Copy them directly only when the corresponding root file does not exist. Otherwise merge
 the routing into the established project instructions instead of overwriting them. Fill in
@@ -128,8 +128,10 @@ pinned release. Then give a file-aware agent a bounded first task, for example:
 
 ```text
 Follow AGENTS.md and read PROJECT_AGENT_CONTEXT.md plus the pinned playbook.
-Audit this repository without changing files. State the playbook ref and enabled profiles,
-then report the three highest-priority findings with evidence.
+Audit this repository without changing files. State the playbook ref, profiles actually
+available in that pinned revision, and profiles enabled by the project. Do not describe an
+absent profile as disabled or not enabled. Then report the three highest-priority findings
+with evidence.
 ```
 
 See the [adoption guide](ADOPTION.md) for updates, rollback, vendored snapshots, detailed

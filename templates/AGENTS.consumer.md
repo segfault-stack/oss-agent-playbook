@@ -5,7 +5,7 @@ The pinned OSS Agent Playbook is located at `.agent/oss-playbook`.
 Before publication, repository maintenance, CI, release, security, or community work:
 
 1. Read `.agent/oss-playbook/docs/principles.md` and `.agent/oss-playbook/docs/agent-workflow.md`.
-2. Read `PROJECT_AGENT_CONTEXT.md` for this project's facts, commands, risks, and enabled profiles.
+2. Read `PROJECT_AGENT_CONTEXT.md` for this project's facts, commands, risks, and available and enabled profiles.
 3. Use `.agent/oss-playbook/README.md` to select only the task-specific core documents and profiles that apply.
 
 If the pinned playbook is missing, stop and report the checkout problem. Do not fetch a mutable replacement automatically.

@@ -6,12 +6,28 @@ No technology profiles have been published yet. Use [`_template/PROFILE.md`](_te
 
 ## Selection
 
-A consumer lists enabled profiles in `PROJECT_AGENT_CONTEXT.md`. Several profiles may apply to the same project. An agent reads a profile only when both conditions hold:
+Treat availability and selection as separate facts:
+
+- **available** means the profile exists in the pinned playbook revision;
+- **enabled** means the consumer selected that available profile in
+  `PROJECT_AGENT_CONTEXT.md`.
+
+Before describing profile state, inspect the pinned `profiles/` directory. Ignore
+`_template/`, prose examples, and profiles from other revisions. If a profile is absent,
+say it is unavailable in the pinned revision. Never call it disabled, not enabled, or
+intentionally omitted; those phrases incorrectly imply that it exists.
+
+A consumer records available and enabled profiles in `PROJECT_AGENT_CONTEXT.md`. Several
+available profiles may apply to the same project. An agent reads a profile only when both
+conditions hold:
 
 1. the consumer explicitly enables it or the user asks to evaluate it;
 2. its scope intersects the current task.
 
 Technology detection alone may justify recommending a profile, but it must not silently add the profile or turn its defaults into project facts.
+
+If an enabled profile is absent from the pinned revision, report the context error. Do not
+invent or fetch the missing guidance.
 
 ## Precedence and composition
 

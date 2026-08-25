@@ -39,6 +39,10 @@ Put each rule in one primary document. Link to it elsewhere instead of maintaini
 7. Keep project-specific commands, contacts, support promises, and compatibility claims in consumer project context, not in this repository.
 8. Add a new file only when it has a distinct reader task. Prefer extending the closest existing document.
 9. A profile may specialize a universal property but must link to, not restate, the core rule.
+10. Use the smallest enforcement surface that closes the observed failure. Put behavioral
+    guidance in its source-of-truth document and update only necessary routes or templates.
+    Add automation only when it can detect the actual regression; do not use structural
+    checks as a proxy for agent judgment or wording.
 
 ## Change workflow
 
@@ -89,6 +93,12 @@ Before handing off a change:
 - confirm headings and lists render clearly;
 - verify that examples contain no real credentials, personal data, or implied promises;
 - run `python3 scripts/check_docs.py` and any other repository-provided checks.
+
+After every agent-authored change to this playbook, explicitly offer the human maintainer
+an immediate review of the complete diff. Provide the exact local review command and offer
+to display the diff in the conversation. A change summary, file list, or test report does
+not replace this offer. Do this for every handoff with changes, even when the diff is small
+or no publication is planned.
 
 If no automated documentation checks exist, say so in the handoff rather than claiming full validation.
 

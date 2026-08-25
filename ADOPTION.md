@@ -19,7 +19,7 @@ PROJECT_AGENT_CONTEXT.md
 
 - `AGENTS.md` is the short vendor-neutral router.
 - `CLAUDE.md` imports `AGENTS.md` for Claude Code.
-- `PROJECT_AGENT_CONTEXT.md` records project facts, enabled profiles, and the playbook pin.
+- `PROJECT_AGENT_CONTEXT.md` records project facts, available and enabled profiles, and the playbook pin.
 - `.agent/oss-playbook/` contains the complete immutable playbook revision.
 
 Use the files in [`templates/`](templates/) as starting points. Merge the adapter into existing project instructions; do not overwrite established `AGENTS.md` or `CLAUDE.md` content blindly.
@@ -112,7 +112,13 @@ The consumer repository may replace generic defaults with project-specific decis
 
 ## Technology profiles
 
-List enabled profiles in `PROJECT_AGENT_CONTEXT.md`. Profiles are additive: a project may enable `python` and `docker`, for example. The root adapter tells agents to read a profile only when its scope intersects the current task.
+List available and enabled profiles separately in `PROJECT_AGENT_CONTEXT.md`. Derive
+availability from profile directories actually present in the pinned playbook revision,
+excluding `_template/`. List only profiles deliberately selected by the project as enabled.
+
+An absent profile is unavailable, not disabled or not enabled. Treat an enabled but
+unavailable profile as a context error. Read an enabled profile only when its scope
+intersects the current task.
 
 A profile specializes core properties for an ecosystem. It does not override platform constraints, authorization boundaries, or project facts.
 
@@ -122,8 +128,8 @@ A profile specializes core properties for an ecosystem. It does not override pla
 - [ ] The source URL, immutable ref, resolved commit, and import method are recorded once.
 - [ ] Root `AGENTS.md` routes to the pinned path without replacing project instructions.
 - [ ] Root `CLAUDE.md` imports `AGENTS.md` and retains any necessary Claude-specific rules.
-- [ ] Project commands, risks, authority boundaries, and enabled profiles are filled in.
-- [ ] An agent can state which playbook revision and profiles it loaded.
+- [ ] Project commands, risks, authority boundaries, and available and enabled profiles are filled in.
+- [ ] An agent can accurately state which playbook revision and profiles it found and loaded.
 - [ ] The update and rollback procedure is documented and tested by inspection.
 - [ ] No runtime step depends on fetching a mutable branch or website.
 
