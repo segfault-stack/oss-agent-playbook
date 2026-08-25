@@ -1,8 +1,12 @@
 # OSS Agent Playbook
 
-Reusable, technology-neutral instructions for AI agents that publish and maintain trustworthy open-source repositories.
+A technology-neutral maintenance playbook that helps AI agents and their human operators
+audit, improve, and publish open-source repositories with explicit safety and authority
+boundaries.
 
 [![Documentation](https://github.com/segfault-stack/oss-agent-playbook/actions/workflows/docs.yml/badge.svg)](https://github.com/segfault-stack/oss-agent-playbook/actions/workflows/docs.yml)
+[![Release](https://img.shields.io/github/v/release/segfault-stack/oss-agent-playbook?display_name=tag)](https://github.com/segfault-stack/oss-agent-playbook/releases/latest)
+[![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](LICENSE)
 
 **Status:** pre-1.0 and evolving. Pin an exact release or commit when adopting it. Until `1.0.0`, minor releases may revise guidance or integration files incompatibly.
 
@@ -14,10 +18,14 @@ This playbook separates those layers:
 
 - a reusable core defines safety boundaries and repository-maintenance workflow;
 - project context records facts, commands, risks, and deliberate decisions;
-- optional technology profiles specialize the core for ecosystems such as Python, Go, and Docker;
+- an optional profile layer can specialize the core for ecosystems such as Python, Go, and Docker;
 - thin adapters route Codex, Claude Code, and other file-aware agents without loading every document into every prompt.
 
 The contract is intentionally simple: any agent that can read repository Markdown and project-local instructions can apply the playbook. It does not require a particular model, programming language, forge, CI provider, or deployment platform.
+
+The core and profile framework are usable now. No technology profile has been published
+yet. Under the profile lifecycle, each new profile starts as a draft and becomes
+recommended only after representative project validation.
 
 ## What it covers
 
@@ -26,38 +34,110 @@ The contract is intentionally simple: any agent that can read repository Markdow
 - secrets, privacy, licensing, dependencies, and reproducibility;
 - proportional quality gates, CI, branch policy, releases, and operations;
 - authorization boundaries for pushes, releases, deployments, and external communication;
-- adoption templates and composable technology profiles.
+- adoption templates plus a schema and lifecycle for future technology profiles.
 
 It does not create support promises, choose a license for a consumer project, or authorize an agent to mutate external state.
+
+## Choose how to use it
+
+| Need | Delivery mode | Main trade-off |
+| --- | --- | --- |
+| Inspect one repository once | Separate local checkout | No files are added to the target repository; the agent must be given both paths explicitly. |
+| Keep the playbook available in every ordinary clone | Squashed Git subtree (recommended public default) | Updates produce normal reviewable commits, but upstream history is squashed. |
+| Keep exact upstream provenance and a small consumer diff | Git submodule (fully supported) | Every local, cloud, and CI checkout must initialize submodules recursively. |
 
 ## Quick start
 
 ### One-off audit
 
-Give an agent local access to this repository and the target repository, then ask it to follow [`docs/agent-workflow.md`](docs/agent-workflow.md). Name both paths explicitly so the audit does not depend on a remote fetch.
+From the directory containing the target repository, clone an immutable playbook release:
+
+```bash
+git clone \
+  --branch v0.4.1 \
+  https://github.com/segfault-stack/oss-agent-playbook.git \
+  oss-agent-playbook
+```
+
+Give the agent the local paths to both repositories and ask it to follow
+`oss-agent-playbook/docs/agent-workflow.md`. Name both paths explicitly so the audit does
+not depend on a later remote fetch. A read-only audit does not authorize the agent to edit,
+push, publish, or change repository settings.
 
 ### Continuous use
 
-Import an immutable release into the target repository. A squashed subtree is the easiest public default:
+Run the following from a clean target-repository worktree. Pin the playbook as a normal
+dependency; do not track `main`.
+
+#### Option A: squashed subtree
 
 ```bash
 git subtree add \
   --prefix=.agent/oss-playbook \
   https://github.com/segfault-stack/oss-agent-playbook.git \
-  v0.4.0 \
+  v0.4.1 \
   --squash
 ```
 
-Then merge the provided adapters into the project root:
+#### Option B: submodule
 
-- [`templates/AGENTS.consumer.md`](templates/AGENTS.consumer.md) for Codex and vendor-neutral routing;
-- [`templates/CLAUDE.consumer.md`](templates/CLAUDE.consumer.md) for Claude Code;
-- [`templates/PROJECT_AGENT_CONTEXT.md`](templates/PROJECT_AGENT_CONTEXT.md) for project facts and enabled profiles.
+```bash
+git submodule add \
+  https://github.com/segfault-stack/oss-agent-playbook.git \
+  .agent/oss-playbook
+git -C .agent/oss-playbook checkout v0.4.1
+git add .gitmodules .agent/oss-playbook
+```
 
-Git submodule is also fully supported for maintainers who initialize it in every local, cloud, and CI checkout. See the [adoption guide](ADOPTION.md) for add, update, verification, and rollback procedures for both modes.
+Clone a submodule consumer recursively:
+
+```bash
+git clone --recurse-submodules <CONSUMER_REPOSITORY_URL>
+```
+
+Initialize or repair an existing checkout with:
+
+```bash
+git submodule update --init --recursive
+```
+
+#### Route agents to the pinned files
+
+After either import, merge these templates into the target repository root:
+
+- `.agent/oss-playbook/templates/AGENTS.consumer.md` as `AGENTS.md` for Codex and
+  vendor-neutral routing;
+- `.agent/oss-playbook/templates/CLAUDE.consumer.md` as `CLAUDE.md` for Claude Code;
+- `.agent/oss-playbook/templates/PROJECT_AGENT_CONTEXT.md` as
+  `PROJECT_AGENT_CONTEXT.md` for verified project facts and enabled profiles.
+
+Copy them directly only when the corresponding root file does not exist. Otherwise merge
+the routing into the established project instructions instead of overwriting them. Fill in
+every required project-context field and record the immutable ref, resolved commit, and
+delivery mode.
+
+Verify the imported playbook itself:
+
+```bash
+test -f .agent/oss-playbook/README.md
+python3 .agent/oss-playbook/scripts/check_docs.py
+```
+
+Success prints `Documentation checks passed` with the number of Markdown files in the
+pinned release. Then give a file-aware agent a bounded first task, for example:
+
+```text
+Follow AGENTS.md and read PROJECT_AGENT_CONTEXT.md plus the pinned playbook.
+Audit this repository without changing files. State the playbook ref and enabled profiles,
+then report the three highest-priority findings with evidence.
+```
+
+See the [adoption guide](ADOPTION.md) for updates, rollback, vendored snapshots, detailed
+routing rules, and the complete adoption checklist.
 
 ## Playbook map
 
+- [Adoption](ADOPTION.md) — subtree, submodule, snapshot, routing, updates, and rollback.
 - [Principles](docs/principles.md) — scope, positioning, evidence, and restraint.
 - [Audit and priorities](docs/audit-and-priorities.md) — how to inspect a repository and order work.
 - [Public interface](docs/public-interface.md) — metadata, documentation, and community surfaces.
