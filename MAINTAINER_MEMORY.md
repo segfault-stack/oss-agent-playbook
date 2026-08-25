@@ -44,6 +44,13 @@ automation is evidence, not approval. If the maintainer group grows, keep accept
 limited to a small, accountable reviewer set rather than granting agents merge authority.
 See [Decision 0001](docs/decisions/0001-git-native-maintainer-memory.md).
 
+### MM-004 — Validate indexes against their sources
+
+When a human-readable index repeats filenames or status metadata owned by underlying
+documents, validate the index against those sources. This prevents missing entries and
+stale status labels from surviving otherwise successful documentation checks. The
+[documentation checker](scripts/check_docs.py) applies this rule to the decision log.
+
 ## Updating this index
 
 Add or revise an entry only when the lesson is:

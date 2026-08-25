@@ -18,6 +18,11 @@ DECISION_NAME_RE = re.compile(r"^\d{4}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 DECISION_STATUS_RE = re.compile(r"^- Status: (Proposed|Accepted|Superseded|Rejected)$", re.MULTILINE)
 DECISION_DATE_RE = re.compile(r"^- Date: (\d{4}-\d{2}-\d{2})$", re.MULTILINE)
 DECISION_SUPERSEDES_RE = re.compile(r"^- Supersedes: \S.+$", re.MULTILINE)
+DECISION_INDEX_RE = re.compile(
+    r"^- \[[^\]]+\]\((\d{4}-[a-z0-9]+(?:-[a-z0-9]+)*\.md)\)"
+    r"\s+—\s+(Proposed|Accepted|Superseded|Rejected)$",
+    re.MULTILINE,
+)
 MEMORY_ID_RE = re.compile(r"^### (MM-\d{3})\s+—\s+", re.MULTILINE)
 
 
@@ -105,6 +110,7 @@ def check_repository_contract(files: list[Path]) -> list[str]:
     if not decisions:
         errors.append("docs/decisions: expected at least one numbered decision record")
     decision_numbers: list[str] = []
+    decision_statuses: dict[str, str] = {}
     for path in decisions:
         relative = path.relative_to(ROOT)
         if not DECISION_NAME_RE.fullmatch(path.name):
@@ -112,8 +118,11 @@ def check_repository_contract(files: list[Path]) -> list[str]:
         else:
             decision_numbers.append(path.name[:4])
         text = path.read_text(encoding="utf-8")
-        if len(DECISION_STATUS_RE.findall(text)) != 1:
+        decision_status = DECISION_STATUS_RE.findall(text)
+        if len(decision_status) != 1:
             errors.append(f"{relative}: expected exactly one valid Status metadata field")
+        else:
+            decision_statuses[path.name] = decision_status[0]
         decision_dates = DECISION_DATE_RE.findall(text)
         if len(decision_dates) != 1:
             errors.append(f"{relative}: expected exactly one ISO Date metadata field")
@@ -126,6 +135,27 @@ def check_repository_contract(files: list[Path]) -> list[str]:
             errors.append(f"{relative}: expected exactly one non-empty Supersedes metadata field")
     if len(decision_numbers) != len(set(decision_numbers)):
         errors.append("docs/decisions: duplicate four-digit decision number")
+
+    decision_index_path = decision_dir / "README.md"
+    if decision_index_path.is_file():
+        indexed_decisions = DECISION_INDEX_RE.findall(
+            decision_index_path.read_text(encoding="utf-8")
+        )
+        indexed_names = [name for name, _ in indexed_decisions]
+        if len(indexed_names) != len(set(indexed_names)):
+            errors.append("docs/decisions/README.md: duplicate decision index entry")
+        decision_names = {path.name for path in decisions}
+        for name in sorted(decision_names - set(indexed_names)):
+            errors.append(f"docs/decisions/README.md: missing decision index entry: {name}")
+        for name in sorted(set(indexed_names) - decision_names):
+            errors.append(f"docs/decisions/README.md: unknown decision index entry: {name}")
+        for name, indexed_status in indexed_decisions:
+            actual_status = decision_statuses.get(name)
+            if actual_status is not None and indexed_status != actual_status:
+                errors.append(
+                    "docs/decisions/README.md: status mismatch for "
+                    f"{name}: index says {indexed_status}, record says {actual_status}"
+                )
 
     memory_path = ROOT / "MAINTAINER_MEMORY.md"
     if memory_path.is_file():
