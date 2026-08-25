@@ -9,6 +9,8 @@ Instructions in this file apply to the entire repository.
 ## Sources of truth
 
 - `README.md` is the short index and scope statement.
+- `GOVERNANCE.md` owns maintainer roles, acceptance authority, and decision thresholds.
+- `AI_CONTRIBUTIONS.md` owns the human-review boundary for agent-assisted public work.
 - `PROJECT_AGENT_CONTEXT.md` records this repository's own verified commands, public boundary, and release process.
 - `MAINTAINER_MEMORY.md` indexes accepted public maintenance lessons; it is advisory and does not override instructions or current project facts.
 - `docs/decisions/` records consequential maintenance decisions and their supersession history.
@@ -51,6 +53,21 @@ For substantive changes:
 3. Update affected checklists, templates, links, and adoption guidance.
 4. Review the result from both perspectives: an agent applying the playbook and a maintainer adopting it.
 5. Keep unrelated user changes intact.
+
+## Public contributions
+
+- Follow `CONTRIBUTING.md`, `GOVERNANCE.md`, and `AI_CONTRIBUTIONS.md` when preparing work
+  for this repository.
+- Do not publish an issue, pull request, review reply, or other repository communication
+  until a human contributor has read the exact final diff and submission text.
+- Agents may perform authorized mechanical publication after that review, but cannot supply
+  human acceptance, approval, or maintainer authority.
+- Broad guidance, technology profiles, and consequential changes require a linked issue
+  with maintainer-accepted scope before implementation. Narrow corrections may go directly
+  to a pull request.
+- Do not open or advance parallel changes to evade the one-active-contribution limit.
+- Maintainers may close low-quality, misleading, bulk, or unreviewable work without asking
+  an agent to generate a detailed rebuttal.
 
 ## Maintainer memory and decisions
 

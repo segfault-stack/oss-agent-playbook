@@ -51,6 +51,22 @@ documents, validate the index against those sources. This prevents missing entri
 stale status labels from surviving otherwise successful documentation checks. The
 [documentation checker](scripts/check_docs.py) applies this rule to the decision log.
 
+### MM-005 — Protect maintainer attention before implementation
+
+For broad guidance, profiles, and consequential changes, decide whether the problem belongs
+before reviewing an implementation. Accepted scope makes work eligible for review, not
+guaranteed to merge. Limit parallel external submissions and preserve the right to decline
+work whose long-term maintenance cost exceeds its cross-project value. See
+[Decision 0002](docs/decisions/0002-human-gated-contribution-governance.md).
+
+### MM-006 — Judge agent-assisted work by accountable outcomes
+
+Do not ban or attempt to detect AI-generated contributions. Require a human to read and
+understand the final public submission, review its reported evidence and limitations, and
+own follow-up before an agent publishes it. Judge observable relevance, evidence,
+correctness, and maintainability. See
+[Decision 0002](docs/decisions/0002-human-gated-contribution-governance.md).
+
 ## Updating this index
 
 Add or revise an entry only when the lesson is:

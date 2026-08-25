@@ -26,6 +26,25 @@ Keep commits focused and explain user impact. Before pushing, inspect the exact 
 
 Repository setting changes and pushes are external mutations. Perform them only when the user's request authorizes them.
 
+## External contribution controls
+
+Treat contributor attention and CI capacity as bounded resources. When submission volume
+justifies it, cap concurrent ready-for-review pull requests from users without write access
+and maintain a narrow bypass list for proven contributors. Do not use collaborator access
+only to bypass an intake limit.
+
+Run untrusted fork changes with the minimum token permissions and without repository
+secrets. Prefer the ordinary pull-request event for validation. Do not use a privileged
+workflow event to check out and execute untrusted fork content. Require manual approval
+before external workflows when jobs use costly infrastructure or other risk makes that
+review worthwhile.
+
+Automate deterministic intake properties such as required checks, document structure, and
+changed-file consistency. Do not claim that generated-text detection, a completed template,
+or a passing check proves human understanding or makes a contribution worth accepting.
+Avoid bots that add repetitive failure narration or stale activity without reducing real
+maintainer work.
+
 ## Releases
 
 A release should refer to an immutable tag and communicate:

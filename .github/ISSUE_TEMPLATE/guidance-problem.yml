@@ -6,7 +6,7 @@ labels:
 body:
   - type: markdown
     attributes:
-      value: Do not include credentials, private logs, personal data, or confidential repository content. Report exploitable security issues privately through the Security tab.
+      value: Read CONTRIBUTING.md and AI_CONTRIBUTIONS.md before submitting agent-assisted work. Do not include credentials, private logs, personal data, or confidential repository content. Report exploitable security issues privately through the Security tab.
   - type: input
     id: location
     attributes:
@@ -37,9 +37,11 @@ body:
     validations:
       required: false
   - type: checkboxes
-    id: safety
+    id: readiness
     attributes:
-      label: Public-data check
+      label: Submission check
       options:
+        - label: I read and understand this final submission, including any agent-assisted content.
+          required: true
         - label: I removed credentials, private data, and confidential logs from this report.
           required: true

@@ -44,7 +44,7 @@ Import an immutable release into the target repository. A squashed subtree is th
 git subtree add \
   --prefix=.agent/oss-playbook \
   https://github.com/segfault-stack/oss-agent-playbook.git \
-  v0.3.1 \
+  v0.4.0 \
   --squash
 ```
 
@@ -73,7 +73,11 @@ The playbook separates hard safety and authorization boundaries from recommended
 
 ## Contributing and support
 
-Issues and pull requests are welcome when they make agent decisions clearer or safer. Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a change. Use [SUPPORT.md](SUPPORT.md) to choose the right help channel and [SECURITY.md](SECURITY.md) for sensitive reports.
+Issues and pull requests are welcome when they make agent decisions clearer or safer. Read
+[Contributing](CONTRIBUTING.md), [Governance](GOVERNANCE.md), and
+[AI-assisted contributions](AI_CONTRIBUTIONS.md) before proposing a change. Use
+[Support](SUPPORT.md) to choose the right help channel and [Security](SECURITY.md) for
+sensitive reports.
 
 Run the dependency-free documentation check locally:
 

@@ -26,6 +26,21 @@ Add contribution instructions, issue forms, a change template, support policy, a
 
 Public forms should warn users not to include credentials, authorization headers, cookies, personal data, or raw private logs. Provide a private route for vulnerability reports and state supported versions if they are defined. Do not promise response times that cannot be maintained.
 
+Route distinct work through the smallest useful set of structured entry points, such as a
+current-guidance problem, a new proposal, a technology-specific request, and a bounded
+question. Require maintainer-accepted scope before contributors implement broad,
+cross-cutting, or expensive proposals. Keep narrow corrections easy to submit directly.
+
+Protect review capacity explicitly. A public project may limit concurrent external pull
+requests, require one coherent change at a time, and close unsolicited work that costs more
+to review and maintain than its demonstrated value. Use trusted-contributor bypasses before
+granting broader repository access. Do not label broad research or architecture work as a
+beginner task merely to attract participation.
+
+Do not adopt a code of conduct, discussion forum, response promise, or contributor role
+without a human owner prepared to operate it. Platform community rules and moderation
+tools are a more honest initial boundary than a policy nobody can enforce.
+
 ## External communication
 
 Promotion must follow, not substitute for, safety and usability work. Target places whose audience actually has the problem, lead with the concrete outcome, and then explain the broader contract.

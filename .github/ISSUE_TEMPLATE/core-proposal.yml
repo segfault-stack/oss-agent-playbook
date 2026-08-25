@@ -1,0 +1,58 @@
+name: Core proposal
+description: Propose new universal guidance, adoption behavior, or a cross-document change.
+title: "[Proposal]: "
+labels:
+  - proposal
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form before implementing broad or consequential work. Acceptance means the scope is eligible for review, not guaranteed to merge. Read CONTRIBUTING.md and AI_CONTRIBUTIONS.md first.
+
+        Do not include credentials, private logs, personal data, or confidential repository content. Report exploitable security issues privately through the Security tab.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Cross-project problem
+      description: Describe the recurring problem and who encounters it.
+    validations:
+      required: true
+  - type: textarea
+    id: current-gap
+    attributes:
+      label: Current gap
+      description: Link existing playbook sections and explain why they do not already resolve the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed scope
+      description: State the smallest rule or structure that would solve the problem and explicit non-goals.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Prefer primary official sources and representative project examples.
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and risks
+      description: Identify affected adopters, profiles, authority boundaries, and possible breaking behavior.
+    validations:
+      required: true
+  - type: checkboxes
+    id: readiness
+    attributes:
+      label: Submission check
+      options:
+        - label: I searched existing issues, decisions, and playbook text for duplicates or conflicts.
+          required: true
+        - label: I read and understand this final submission, including any agent-assisted content.
+          required: true
+        - label: I removed credentials, private data, and confidential logs.
+          required: true

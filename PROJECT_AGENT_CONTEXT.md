@@ -30,6 +30,14 @@ This repository dogfoods the OSS Agent Playbook directly: its root documents are
 
 - Default branch: `main`.
 - Merge policy: reviewed, focused changes with the documentation check passing.
+- External contribution intake: one open non-draft pull request per user without write
+  access; broad work and profiles require maintainer-accepted issue scope.
+- Maintainer review: one approval for ordinary changes; when at least two active
+  maintainers exist, consequential changes require affirmative acceptance from two
+  maintainers, including one non-author approving review, and no unresolved objection.
+- Sole-maintainer path: substantive self-authored work uses a public pull request and an
+  explicit administrator bypass; direct pushes are limited to narrow corrections and
+  urgent recovery.
 - Version source: annotated Git tags using semantic versioning.
 - Release workflow: choose the version, update versioned examples, search for stale release
   pins, verify local and remote commit identity, create an annotated tag, push branch and
@@ -48,6 +56,10 @@ This repository dogfoods the OSS Agent Playbook directly: its root documents are
 - Empty Discussions, Wiki, and Projects remain disabled until an owner and active use case exist.
 - Shared maintainer memory is public, Git-tracked, and advisory. `MAINTAINER_MEMORY.md` indexes accepted lessons; `docs/decisions/` owns consequential decision history.
 - Agents may prepare changes, but a human maintainer reads consequential instruction, memory, and decision changes before acceptance. The current maintainer group has one person; any future group is expected to remain small and accountable.
+- Agent-assisted contributions do not require disclosure, but a human must read and
+  understand the final diff and submission before an agent publishes it.
+- A formal Code of Conduct and DCO sign-offs remain disabled until real moderation or
+  provenance needs justify their operational cost.
 
 ## Playbook source
 

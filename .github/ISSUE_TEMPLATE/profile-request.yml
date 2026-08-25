@@ -4,6 +4,9 @@ title: "[Profile]: "
 labels:
   - profile
 body:
+  - type: markdown
+    attributes:
+      value: Read CONTRIBUTING.md, AI_CONTRIBUTIONS.md, and profiles/README.md first. A maintainer must accept the profile scope before implementation; acceptance does not guarantee merge.
   - type: input
     id: ecosystem
     attributes:
@@ -33,9 +36,13 @@ body:
     validations:
       required: true
   - type: checkboxes
-    id: safety
+    id: readiness
     attributes:
-      label: Public-data check
+      label: Submission check
       options:
+        - label: I searched existing issues and profiles for overlapping proposals.
+          required: true
+        - label: I read and understand this final submission, including any agent-assisted content.
+          required: true
         - label: I removed credentials, private data, and confidential logs from this request.
           required: true

@@ -28,6 +28,8 @@ State prerequisites and identify checks that require network access, credentials
 - Publication boundary:
 - Supported versions or authoritative reference:
 - Contribution and support policy:
+- Contribution intake and maintainer-review policy:
+- Agent-assisted public contribution policy:
 - Private security reporting route:
 - External actions that require maintainer authorization:
 

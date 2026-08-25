@@ -1,0 +1,33 @@
+name: Playbook question
+description: Ask a narrow question about applying or contributing to this playbook.
+title: "[Question]: "
+labels:
+  - question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This channel does not provide support for a consumer project's code, deployment, or agent runtime, and no response time is promised. Use that project's support channel unless the problem is caused by this playbook.
+
+        Do not include credentials, private logs, personal data, or confidential repository content. Report exploitable security issues privately through the Security tab.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Ask one focused question.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Relevant playbook context
+      description: Link the document or section you already checked and describe the applicable repository type.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-data check
+      options:
+        - label: I removed credentials, private data, and confidential logs from this question.
+          required: true

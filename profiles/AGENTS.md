@@ -8,6 +8,7 @@ These instructions apply to `profiles/` in addition to the repository root `AGEN
 2. Confirm that the guidance is ecosystem-specific and useful across multiple real projects.
 3. Verify current behavior against primary official documentation.
 4. Identify interactions with existing profiles.
+5. Confirm the linked profile issue has maintainer-accepted scope.
 
 ## Content rules
 
@@ -24,3 +25,7 @@ These instructions apply to `profiles/` in addition to the repository root `AGEN
 ## Verification
 
 Check links, version claims, commands, platform assumptions, and composition with adjacent profiles. Update the review date only after substantive re-verification, not for editorial changes.
+
+New profiles must use `draft`. Do not promote one to `recommended` until a later focused
+change documents verification across at least two representative repositories or project
+types.

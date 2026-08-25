@@ -42,3 +42,4 @@ improvements do not need a decision record.
 ## Index
 
 - [0001 — Use Git-native maintainer memory with human-owned acceptance](0001-git-native-maintainer-memory.md) — Accepted
+- [0002 — Use human-gated contribution governance](0002-human-gated-contribution-governance.md) — Accepted

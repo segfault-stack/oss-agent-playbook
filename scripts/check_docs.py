@@ -92,8 +92,17 @@ def check_repository_contract(files: list[Path]) -> list[str]:
     errors: list[str] = []
     required = [
         ROOT / "AGENTS.md",
+        ROOT / "AI_CONTRIBUTIONS.md",
+        ROOT / "GOVERNANCE.md",
         ROOT / "PROJECT_AGENT_CONTEXT.md",
         ROOT / "MAINTAINER_MEMORY.md",
+        ROOT / ".github" / "CODEOWNERS",
+        ROOT / ".github" / "pull_request_template.md",
+        ROOT / ".github" / "ISSUE_TEMPLATE" / "config.yml",
+        ROOT / ".github" / "ISSUE_TEMPLATE" / "core-proposal.yml",
+        ROOT / ".github" / "ISSUE_TEMPLATE" / "guidance-problem.yml",
+        ROOT / ".github" / "ISSUE_TEMPLATE" / "profile-request.yml",
+        ROOT / ".github" / "ISSUE_TEMPLATE" / "question.yml",
         ROOT / "docs" / "decisions" / "README.md",
     ]
     for path in required:
@@ -164,6 +173,16 @@ def check_repository_contract(files: list[Path]) -> list[str]:
             errors.append("MAINTAINER_MEMORY.md: expected at least one MM-NNN accepted lesson")
         if len(memory_ids) != len(set(memory_ids)):
             errors.append("MAINTAINER_MEMORY.md: duplicate accepted lesson ID")
+
+    codeowners_path = ROOT / ".github" / "CODEOWNERS"
+    if codeowners_path.is_file():
+        codeowner_rules = [
+            line
+            for line in codeowners_path.read_text(encoding="utf-8").splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        ]
+        if not codeowner_rules:
+            errors.append(".github/CODEOWNERS: expected at least one ownership rule")
 
     return errors
 

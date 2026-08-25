@@ -46,3 +46,13 @@ Use these statuses:
 - **deprecated** — retained for migration but no longer recommended.
 
 A stale review date does not automatically invalidate a profile, but agents must verify time-sensitive instructions before applying them. Breaking profile changes follow the repository versioning policy.
+
+Every new profile starts as **draft**. Promotion to **recommended** requires a separate
+focused review with evidence that its guidance was checked against at least two
+representative repositories or project types within the declared scope. Documentation
+research alone is not sufficient evidence of general suitability.
+
+Start profile work from a maintainer-accepted profile issue. Comment with the intended
+project types, primary sources, outline, and adjacent-profile interactions before opening
+a broad implementation pull request. The author does not automatically become a profile
+owner or project maintainer.

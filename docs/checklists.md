@@ -30,6 +30,12 @@ Use these as review prompts, not as a mandate to add every possible repository f
 - [ ] Required warnings and configuration are not hidden in collapsed or deep documentation.
 - [ ] Configuration examples use non-functional placeholders and match runtime behavior.
 - [ ] Community files and enabled features have content and an owner.
+- [ ] Broad proposals enter through an accepted scope before expensive implementation
+  review; narrow corrections remain easy to submit.
+- [ ] Contribution limits, labels, beginner tasks, and trusted bypasses reflect actual
+  maintainer capacity.
+- [ ] Agent-assisted contribution rules require truthful human accountability without
+  relying on generated-text detection.
 
 ## Reproducibility and engineering
 
@@ -39,6 +45,8 @@ Use these as review prompts, not as a mandate to add every possible repository f
 - [ ] Tests and analysis cover the project's highest-risk behavior.
 - [ ] External inputs and CI components are intentionally versioned.
 - [ ] Main-branch controls depend on stable, proven checks and retain a recovery route.
+- [ ] Fork validation uses minimal permissions, no unavailable secrets, and no privileged
+  execution of untrusted changes.
 
 ## Releases and operations
 

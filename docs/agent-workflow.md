@@ -12,6 +12,23 @@ Start read-only and separate findings into observed, completed, recommended, blo
 
 Project-local instructions may further restrict actions. Preserve user changes and stop when an unresolved choice would materially change scope, public promises, licensing, or external state.
 
+## Agent-assisted public contributions
+
+When acting as a public contributor, follow the target project's intake and AI-assistance
+policy. Do not autonomously publish issues, pull requests, comments, or review replies when
+the project requires human review. Never claim that a human read the final work, that a
+check ran, or that a source supports a statement unless that fact was verified.
+
+A strong default for agent-oriented projects is to allow agent-produced work while
+requiring a human operator to read and understand the exact final diff and submission
+before publication. The agent may then perform authorized mechanical publication. Judge
+the contribution by observable scope, evidence, correctness, and maintainability rather
+than attempting to infer whether its prose was generated.
+
+An accepted issue authorizes work within its stated scope, not merge. Do not open parallel
+changes, fabricate activity, or use alternate identities to evade an intake limit or
+maintainer decision.
+
 ## Execution sequence
 
 Adapt this order to the request and risk:
