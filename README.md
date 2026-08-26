@@ -55,7 +55,7 @@ From the directory containing the target repository, clone an immutable playbook
 
 ```bash
 git clone \
-  --branch v0.4.6 \
+  --branch v0.5.0 \
   https://github.com/segfault-stack/oss-agent-playbook.git \
   oss-agent-playbook
 ```
@@ -76,7 +76,7 @@ dependency; do not track `main`.
 git subtree add \
   --prefix=.agent/oss-playbook \
   https://github.com/segfault-stack/oss-agent-playbook.git \
-  v0.4.6 \
+  v0.5.0 \
   --squash
 ```
 
@@ -86,7 +86,7 @@ git subtree add \
 git submodule add \
   https://github.com/segfault-stack/oss-agent-playbook.git \
   .agent/oss-playbook
-git -C .agent/oss-playbook checkout v0.4.6
+git -C .agent/oss-playbook checkout v0.5.0
 git add .gitmodules .agent/oss-playbook
 ```
 
