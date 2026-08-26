@@ -23,8 +23,9 @@ This playbook separates those layers:
 
 The contract is intentionally simple: any agent that can read repository Markdown and project-local instructions can apply the playbook. It does not require a particular model, programming language, forge, CI provider, or deployment platform.
 
-The core and profile framework are usable now. No technology profile has been published
-yet. Under the profile lifecycle, each new profile starts as a draft and becomes
+The core and profile framework are usable now. The first technology profile,
+[`docker-container-images`](profiles/docker-container-images/PROFILE.md), is available as
+a draft. Under the profile lifecycle, each new profile starts as a draft and becomes
 recommended only after representative project validation.
 
 ## What it covers

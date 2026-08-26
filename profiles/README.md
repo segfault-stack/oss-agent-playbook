@@ -2,7 +2,11 @@
 
 Profiles are optional overlays for ecosystems such as Python, Go, Docker, or a hosting platform. They turn universal properties into ecosystem-specific decisions without making the core playbook depend on a technology.
 
-No technology profiles have been published yet. Use [`_template/PROFILE.md`](_template/PROFILE.md) when adding the first one.
+The following technology profile is available:
+
+- [`docker-container-images`](docker-container-images/PROFILE.md) — draft guidance for Dockerfile-based application images.
+
+Use [`_template/PROFILE.md`](_template/PROFILE.md) when proposing another profile.
 
 ## Selection
 
