@@ -1,14 +1,36 @@
 # Project Agent Context
 
-This repository dogfoods the OSS Agent Playbook directly: its root documents are the source playbook, so no nested self-submodule or subtree is used.
+This repository dogfoods the OSS Agent Playbook directly: its root documents are the
+source playbook, so no nested self-submodule or subtree is used. Its instruction, context,
+memory, and decision files demonstrate this repository's maintenance model; consumer
+requirements are defined separately by `ADOPTION.md` and `templates/`.
 
 ## Required context
 
-- Purpose and audience: reusable repository-maintenance guidance for AI agents and open-source maintainers.
-- Wedge: agents can modify repositories but often lack consistent, safe publication and maintenance rules.
-- General contract: any file-aware agent can apply the Markdown guidance together with project-local context.
-- Primary supported behavior: read-only audits, in-scope repository improvements, verification, and explicit handoff within the documented authorization boundaries.
-- Non-goals: enforcing runtime policy, replacing legal advice, prescribing a technology stack, or authorizing external actions.
+- Purpose and audience: develop reusable guidance for agents and maintainers preparing
+  existing software repositories for public open-source release and subsequent maintenance.
+- Wedge: heterogeneous repositories have different facts, commands, risks, and technology
+  boundaries, but recurring OSS-maintenance concerns otherwise get re-explained or copied
+  differently for every repository.
+- General contract: any file-aware agent can apply the technology-neutral Markdown core
+  together with verified project-local context and any enabled, task-activated profiles.
+- Status: pre-1.0 experiment and reference implementation; it does not claim broad adoption
+  or universal-standard status.
+- Primary supported behavior: read-only audit, authorized repository improvement,
+  observable verification, truthful handoff, and preparation for explicitly authorized
+  public or release operations. A run need not perform every behavior.
+- Repeated-use model: a repository may use the playbook once or keep a pinned revision
+  available for later passes as the repository and guidance change. No scheduled execution,
+  automatic updating, or continuous enforcement is implemented.
+- Scope boundary: the core owns technology-neutral OSS maintenance. Optional profiles own
+  bounded technology-specific artifacts or interfaces and must define activation,
+  outcomes, and verification; absent profiles provide no stack-specific depth.
+- Acceptance boundary: automated checks provide evidence, not maintainer approval. Agents
+  do not gain acceptance authority from capability, task authorization, or passing checks;
+  substantive merge, release, and acceptance into maintained public state remain
+  human-owned.
+- Non-goals: enforcing runtime policy, replacing legal advice, prescribing a technology
+  stack, or authorizing external actions.
 - Sensitive and destructive boundaries: the repository contains no production data or credentials; GitHub settings, releases, pushes, messages, and third-party submissions remain external actions.
 
 ## Local verification
