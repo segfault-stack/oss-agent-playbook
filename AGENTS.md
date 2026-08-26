@@ -94,13 +94,9 @@ Before handing off a change:
 - verify that examples contain no real credentials, personal data, or implied promises;
 - run `python3 scripts/check_docs.py` and any other repository-provided checks.
 
-After every agent-authored change to this playbook, stop before creating a commit or
-publishing remotely and explicitly offer the human maintainer an immediate review of the
-complete diff. State plainly that reviewing the exact diff is required before both commit
-and remote publication. Provide the exact local review command and offer to display the
-diff in the conversation. Do not proceed until the maintainer confirms that review;
-advance authorization to commit or push does not replace it. A change summary, file list,
-or test report is not a substitute, even when the diff is small.
+For every agent-authored change, follow the [review, commit, and publication
+sequence](docs/agent-workflow.md#review-commit-and-publication-sequence). This repository
+requires review of the exact candidate before both local commit and remote publication.
 
 If no automated documentation checks exist, say so in the handoff rather than claiming full validation.
 
@@ -109,7 +105,3 @@ If no automated documentation checks exist, say so in the handoff rather than cl
 Write concise English intended for agents and maintainers. Use short sections, explicit conditions, and imperative language. Define uncommon terms on first use. Avoid marketing copy, badge walls, decorative diagrams, and framework-specific tutorials.
 
 Report state only when it affects the outcome, the next action, or a maintainer decision.
-Do not present an expected intermediate state, such as a local branch being ahead after an
-authorized commit, as a warning or blocker. When the user has authorized the remaining
-steps and no real constraint intervenes, continue the workflow and report the completed
-outcome in plain language.

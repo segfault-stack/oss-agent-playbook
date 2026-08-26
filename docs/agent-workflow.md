@@ -29,6 +29,26 @@ An accepted issue authorizes work within its stated scope, not merge. Do not ope
 changes, fabricate activity, or use alternate identities to evade an intake limit or
 maintainer decision.
 
+## Review, commit, and publication sequence
+
+Keep authorization and review as separate gates. Authorization defines which actions the
+agent may eventually perform. Review accepts one exact candidate for those actions.
+
+1. Record separately which actions are authorized.
+2. Prepare and verify the complete candidate, including tracked and untracked changes and
+   any public text. Do not cross a project-required pre-commit review gate.
+3. Present the candidate, verification evidence, and the authorized actions that will
+   follow approval. State whether review is required before commit, publication, or both,
+   and provide commands that show the exact candidate.
+4. Wait for clear approval given after the candidate was presented. Advance authorization
+   is not review, and no magic confirmation phrase is required.
+5. If the candidate is unchanged, perform all reviewed and authorized steps without asking
+   again. Verify and report the completed outcome without treating expected intermediate
+   states as blockers.
+
+Any material change to the candidate resets review; identifiers created by the approved
+mechanics do not.
+
 ## Execution sequence
 
 Adapt this order to the request and risk:
