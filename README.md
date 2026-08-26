@@ -23,8 +23,9 @@ This playbook separates those layers:
 
 The contract is intentionally simple: any agent that can read repository Markdown and project-local instructions can apply the playbook. It does not require a particular model, programming language, forge, CI provider, or deployment platform.
 
-The core and profile framework are usable now. No technology profile has been published
-yet. Under the profile lifecycle, each new profile starts as a draft and becomes
+The core and profile framework are usable now. The first technology profile,
+[`docker-container-images`](profiles/docker-container-images/PROFILE.md), is available as
+a draft. Under the profile lifecycle, each new profile starts as a draft and becomes
 recommended only after representative project validation.
 
 ## What it covers
@@ -54,7 +55,7 @@ From the directory containing the target repository, clone an immutable playbook
 
 ```bash
 git clone \
-  --branch v0.4.6 \
+  --branch v0.5.0 \
   https://github.com/segfault-stack/oss-agent-playbook.git \
   oss-agent-playbook
 ```
@@ -75,7 +76,7 @@ dependency; do not track `main`.
 git subtree add \
   --prefix=.agent/oss-playbook \
   https://github.com/segfault-stack/oss-agent-playbook.git \
-  v0.4.6 \
+  v0.5.0 \
   --squash
 ```
 
@@ -85,7 +86,7 @@ git subtree add \
 git submodule add \
   https://github.com/segfault-stack/oss-agent-playbook.git \
   .agent/oss-playbook
-git -C .agent/oss-playbook checkout v0.4.6
+git -C .agent/oss-playbook checkout v0.5.0
 git add .gitmodules .agent/oss-playbook
 ```
 

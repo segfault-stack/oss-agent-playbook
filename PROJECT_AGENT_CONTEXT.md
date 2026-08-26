@@ -47,7 +47,7 @@ This repository dogfoods the OSS Agent Playbook directly: its root documents are
 
 ## Playbook profiles
 
-- Available profiles: `none`
+- Available profiles: `docker-container-images`
 - Enabled profiles: `none`
 
 ## Project-specific decisions
