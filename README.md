@@ -5,9 +5,23 @@ existing repositories. It helps file-aware agents audit public readiness, make a
 improvements, verify observable results, and hand a concrete candidate to a human for
 acceptance without recopying the same guidance into every project.
 
-[![Documentation](https://github.com/segfault-stack/oss-agent-playbook/actions/workflows/docs.yml/badge.svg)](https://github.com/segfault-stack/oss-agent-playbook/actions/workflows/docs.yml)
-[![Release](https://img.shields.io/github/v/release/segfault-stack/oss-agent-playbook?display_name=tag)](https://github.com/segfault-stack/oss-agent-playbook/releases/latest)
-[![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](LICENSE)
+<p align="center">
+  <a href="https://github.com/segfault-stack/oss-agent-playbook/actions/workflows/docs.yml"><img alt="Documentation status" src="https://github.com/segfault-stack/oss-agent-playbook/actions/workflows/docs.yml/badge.svg"></a>
+  <a href="https://github.com/segfault-stack/oss-agent-playbook/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/segfault-stack/oss-agent-playbook?display_name=tag"></a>
+  <a href="LICENSE"><img alt="License: CC0-1.0" src="https://img.shields.io/badge/license-CC0--1.0-blue.svg"></a>
+</p>
+
+<p align="center">
+  <a href="#why-this-exists">Why</a> ·
+  <a href="#how-a-playbook-run-works">How it works</a> ·
+  <a href="#try-it-or-keep-it-available">Try it</a> ·
+  <a href="ADOPTION.md">Adoption</a> ·
+  <a href="#contributing-and-support">Contributing</a>
+</p>
+
+<p align="center">
+  <img src="assets/readme/oss-agent-playbook-loop.gif" alt="An existing repository is audited, improved within authorization, verified, reviewed by a human, accepted into the public project, and revisited later; core guidance, project facts, and bounded profiles inform the run.">
+</p>
 
 **Status:** pre-1.0, evolving experiment and reference implementation. It has not been
 validated as a universal standard. Pin an exact release or commit when adopting it;
@@ -27,22 +41,6 @@ technology-specific guidance separate. It can support a one-time audit or remain
 for later passes as the repository, its releases, and the shared guidance change.
 
 ## How a playbook run works
-
-```text
-existing repository + shared playbook + project-local facts
-                          ↓
-             audit OSS and public-release state
-                          ↓
-           make only authorized, in-scope changes
-                          ↓
-             verify what can be observed
-                          ↓
-          human reviews the concrete candidate
-                          ↓
-       merge, release, or publish only when authorized
-                          ↓
-            rerun later when another pass is useful
-```
 
 A run may stop after a read-only audit; it does not have to edit or publish anything.
 Keeping the playbook connected makes repeated use easier, but the repository provides

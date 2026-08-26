@@ -13,6 +13,9 @@ Presentation should make information easier to scan and trust. It should not com
 
 Create rhythm with short paragraphs, meaningful headings, compact lists, occasional tables, command blocks, warnings, and whitespace. Do not alternate formats mechanically or decorate an otherwise flat hierarchy.
 
+Center only a compact identity region when it improves hierarchy, such as badges,
+navigation, or one primary visual. Keep explanatory prose and procedures left-aligned.
+
 ## Use structures for the information they fit
 
 Use a table for concise comparisons, exact mappings, compatibility, command variants, or configuration properties. Avoid it for long prose, nested procedures, feature-marketing cards, or content that becomes unreadable on a narrow screen.
@@ -32,6 +35,12 @@ Remove stale, decorative, duplicate, or unpublished badges. A badge does not pro
 A README may use one primary hero or none. A useful hero is compact, legible at normal repository width, proportional, locally stored, and supplied with meaningful alternative text. It should reinforce identity without competing with the project explanation.
 
 Avoid multiple competing logos, light/dark variants without a demonstrated need, tiny labels in oversized artwork, fake user interfaces, stale screenshots, excessive empty space, and illustrations added only to fill space. Never create or replace visual assets unless the maintainer has authorized that work.
+
+Treat animation as progressive enhancement. Its first frame must communicate the complete
+basic meaning, while motion only directs attention. Use meaningful alternative text,
+verify a static frame and a downscaled rendering, and set an asset-size budget appropriate
+to the hosting surface. Prefer short, loopable, repository-local media without runtime
+services, tracking, or external font dependencies.
 
 Inspect screenshots and binaries for credentials, conversations, personal identifiers, private endpoints, filenames, timestamps, and other production-derived data.
 
