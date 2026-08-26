@@ -18,7 +18,8 @@ This playbook separates those layers:
 
 - a reusable core defines safety boundaries and repository-maintenance workflow;
 - project context records facts, commands, risks, and deliberate decisions;
-- an optional profile layer can specialize the core for ecosystems such as Python, Go, and Docker;
+- optional profiles specialize core properties at named technology-specific repository
+  artifacts or interfaces;
 - thin adapters route Codex, Claude Code, and other file-aware agents without loading every document into every prompt.
 
 The contract is intentionally simple: any agent that can read repository Markdown and project-local instructions can apply the playbook. It does not require a particular model, programming language, forge, CI provider, or deployment platform.
@@ -150,7 +151,7 @@ routing rules, and the complete adoption checklist.
 - [Engineering and releases](docs/engineering-and-releases.md) — quality gates, CI, branches, operations, and releases.
 - [Agent workflow](docs/agent-workflow.md) — authorization, execution, verification, and handoff.
 - [Checklists](docs/checklists.md) — publication and maintenance review.
-- [Technology profiles](profiles/README.md) — optional stack-specific overlays.
+- [Technology profiles](profiles/README.md) — project-selected, task-loaded technology overlays.
 
 The playbook separates hard safety and authorization boundaries from recommended defaults and optional maturity practices. Project-specific decisions may specialize defaults, but they must not silently conceal security, privacy, legal, or data-loss risk.
 

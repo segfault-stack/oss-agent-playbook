@@ -1,38 +1,52 @@
 name: Technology profile request
-description: Propose reusable guidance for an ecosystem such as Python, Go, or Docker.
+description: Propose reusable guidance for a technology-specific artifact or interface.
 title: "[Profile]: "
 labels:
   - profile
 body:
   - type: markdown
     attributes:
-      value: Read CONTRIBUTING.md, AI_CONTRIBUTIONS.md, and profiles/README.md first. A maintainer must accept the profile scope before implementation; acceptance does not guarantee merge.
+      value: Read CONTRIBUTING.md, AI_CONTRIBUTIONS.md, and profiles/README.md first. A maintainer must accept the profile boundary before implementation; acceptance does not guarantee merge.
   - type: input
-    id: ecosystem
+    id: artifact
     attributes:
-      label: Ecosystem
-      placeholder: Python packaging
+      label: Technology or artifact
+      placeholder: Python dependency manifests and lock files
     validations:
       required: true
   - type: textarea
-    id: scope
+    id: problem
     attributes:
-      label: Cross-project scope
-      description: Explain which recurring decisions the profile should specialize and what it should not own.
+      label: Recurring cross-project problem
+      description: Describe the decisions or failures that recur across projects. Do not propose a general best-practice catalogue.
     validations:
       required: true
   - type: textarea
-    id: projects
+    id: boundary
     attributes:
-      label: Representative projects or scenarios
-      description: Show that the guidance applies beyond one repository.
+      label: Proposed boundary
+      description: Name the repository artifacts or interfaces the profile would own, the properties it would protect, material variants included or excluded, and only the adjacent boundary likely to be confused with it.
     validations:
       required: true
   - type: textarea
-    id: sources
+    id: activation
     attributes:
-      label: Primary official sources
-      description: Link current ecosystem documentation, standards, or specifications.
+      label: Activation signals and false positives
+      description: List observable repository signals, tasks that introduce or change the boundary, incidental lookalikes, and exclusions.
+    validations:
+      required: true
+  - type: textarea
+    id: outcomes
+    attributes:
+      label: Expected coverage
+      description: List the observable outcomes the profile should protect. Detailed decisions and implementation are not required before scope acceptance.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Examples or evidence
+      description: Provide concrete project shapes or examples showing that the problem recurs. Identify candidate official sources when the proposed boundary depends on a specification or tool contract. Completed research and validation are not required.
     validations:
       required: true
   - type: checkboxes

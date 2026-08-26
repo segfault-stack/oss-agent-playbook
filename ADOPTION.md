@@ -103,7 +103,7 @@ A future installer may automate subtree or snapshot import and create adapters. 
 
 ## Agent routing
 
-OpenAI Codex uses `AGENTS.md`; Claude Code uses `CLAUDE.md` and supports importing `AGENTS.md` with `@AGENTS.md`. Keep both root files short. They should route the agent to core documents, task-specific guides, the project context, and only the enabled technology profiles relevant to the task.
+OpenAI Codex uses `AGENTS.md`; Claude Code uses `CLAUDE.md` and supports importing `AGENTS.md` with `@AGENTS.md`. Keep both root files short. They should route the agent to core documents, task-specific guides, the project context, and only the enabled technology profiles activated by the task.
 
 Do not import every playbook document into startup context. Detailed procedures should be read on demand.
 
@@ -117,15 +117,20 @@ The consumer repository may replace generic defaults with project-specific decis
 
 ## Technology profiles
 
-List available and enabled profiles separately in `PROJECT_AGENT_CONTEXT.md`. Derive
+List available and enabled profile IDs separately in `PROJECT_AGENT_CONTEXT.md`. Derive
 availability from profile directories actually present in the pinned playbook revision,
-excluding `_template/`. List only profiles deliberately selected by the project as enabled.
+excluding `_template/`, without loading every profile body. List only profiles deliberately
+selected by the project as enabled.
 
 An absent profile is unavailable, not disabled or not enabled. Treat an enabled but
-unavailable profile as a context error. Read an enabled profile only when its scope
-intersects the current task.
+unavailable profile as a context error. Read an enabled profile only when repository or
+task evidence activates it and its boundary intersects the current task. Read one
+unenabled profile only when the user explicitly asks to evaluate it, and keep that use to
+audit findings and recommendations.
 
-A profile specializes core properties for an ecosystem. It does not override platform constraints, authorization boundaries, or project facts.
+A profile specializes core properties at a named technology-specific artifact or
+interface. Enabling one does not authorize changes or override platform constraints,
+core priorities, or project facts.
 
 ## Adoption checks
 

@@ -47,10 +47,12 @@ State prerequisites and identify checks that require network access, credentials
 Record availability and selection separately. For `Available profiles`, list profile IDs
 that actually exist under `.agent/oss-playbook/profiles/` in the pinned revision; ignore
 `_template/`. For `Enabled profiles`, list only available profiles selected by this
-project. Use `none` when a list is empty.
+project. Use `none` when a list is empty. Inventory directory names without loading every
+profile body.
 
 Call an absent profile unavailable, never disabled or not enabled. Report an enabled but
-unavailable profile as a context error.
+unavailable profile as a context error. Enabling permits task-activated profile guidance;
+it does not authorize changes or external actions.
 
 - Available profiles: `none`
 - Enabled profiles: `none`

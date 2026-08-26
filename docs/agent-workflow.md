@@ -56,7 +56,9 @@ Adapt this order to the request and risk:
 1. Read project-local agent instructions and context. Verify the pinned playbook revision,
    inventory profiles actually present in it, and distinguish available profiles from
    profiles the project enabled. Never describe a profile absent from the pinned revision
-   as disabled, not enabled, or intentionally omitted.
+   as disabled, not enabled, or intentionally omitted. Inventory profile IDs without
+   loading every profile body. Load an enabled profile only when the task activates it, or
+   one unenabled profile when the user explicitly requests a read-only evaluation.
 2. Audit purpose, technical reality, public surface, and worktree state using [Audit and priorities](audit-and-priorities.md).
 3. Resolve P0 safety, privacy, licensing, and truthfulness issues as defined there.
 4. Establish the audience, limitations, non-goals, and the [wedge and general contract](principles.md#pair-a-concrete-entry-point-with-a-general-contract).
