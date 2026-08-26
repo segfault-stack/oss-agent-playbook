@@ -1,28 +1,77 @@
 # OSS Agent Playbook
 
-A technology-neutral maintenance playbook that helps AI agents and their human operators
-audit, improve, and publish open-source repositories with explicit safety and authority
-boundaries.
+A technology-neutral maintenance playbook for applying recurring open-source work to
+existing repositories. It helps file-aware agents audit public readiness, make authorized
+improvements, verify observable results, and hand a concrete candidate to a human for
+acceptance without recopying the same guidance into every project.
 
 [![Documentation](https://github.com/segfault-stack/oss-agent-playbook/actions/workflows/docs.yml/badge.svg)](https://github.com/segfault-stack/oss-agent-playbook/actions/workflows/docs.yml)
 [![Release](https://img.shields.io/github/v/release/segfault-stack/oss-agent-playbook?display_name=tag)](https://github.com/segfault-stack/oss-agent-playbook/releases/latest)
 [![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](LICENSE)
 
-**Status:** pre-1.0 and evolving. Pin an exact release or commit when adopting it. Until `1.0.0`, minor releases may revise guidance or integration files incompatibly.
+**Status:** pre-1.0, evolving experiment and reference implementation. It has not been
+validated as a universal standard. Pin an exact release or commit when adopting it;
+before `1.0.0`, minor releases may revise guidance or integration files incompatibly.
 
 ## Why this exists
 
-Coding agents can edit a repository, but they do not automatically share a reliable standard for publication boundaries, honest positioning, secret handling, documentation, CI, releases, or external communication. Project instructions often become a mixture of local commands and copied generic advice that drifts across repositories.
+Preparing different existing projects for public open-source life repeatedly raises the
+same questions: what is safe to expose, what the project can honestly claim, how a stranger
+can evaluate it, which checks support those claims, and who may merge, release, or
+communicate publicly. Project facts and technology details differ, but re-explaining or
+copying the recurring maintenance rules for every agent and repository wastes work and
+causes drift.
 
-This playbook separates those layers:
+This playbook provides a reusable baseline while keeping local facts and bounded
+technology-specific guidance separate. It can support a one-time audit or remain available
+for later passes as the repository, its releases, and the shared guidance change.
 
-- a reusable core defines safety boundaries and repository-maintenance workflow;
-- project context records facts, commands, risks, and deliberate decisions;
-- optional profiles specialize core properties at named technology-specific repository
-  artifacts or interfaces;
-- thin adapters route Codex, Claude Code, and other file-aware agents without loading every document into every prompt.
+## How a playbook run works
 
-The contract is intentionally simple: any agent that can read repository Markdown and project-local instructions can apply the playbook. It does not require a particular model, programming language, forge, CI provider, or deployment platform.
+```text
+existing repository + shared playbook + project-local facts
+                          ↓
+             audit OSS and public-release state
+                          ↓
+           make only authorized, in-scope changes
+                          ↓
+             verify what can be observed
+                          ↓
+          human reviews the concrete candidate
+                          ↓
+       merge, release, or publish only when authorized
+                          ↓
+            rerun later when another pass is useful
+```
+
+A run may stop after a read-only audit; it does not have to edit or publish anything.
+Keeping the playbook connected makes repeated use easier, but the repository provides
+guidance and deterministic documentation checks, not an always-on linter, updater,
+sandbox, or policy engine.
+
+Agents may research, edit, verify, and perform explicitly authorized mechanical actions.
+Passing checks provide evidence, but a human maintainer still decides whether the exact
+change is accepted into the public project.
+
+## How the guidance stays disciplined
+
+- The reusable core owns technology-neutral OSS properties and workflow. Project-local
+  context owns verified commands, risks, publication boundaries, and deliberate choices.
+- Optional profiles specialize named artifacts or interfaces. A project selects them;
+  applicable repository signals or an explicit task introduction, together with current
+  task scope, activate them. Their outcomes must be observable, and a technology mention
+  alone does not apply an available profile.
+- The workflow keeps agent capability, task authorization, verification evidence,
+  concrete-candidate review, and maintainer acceptance distinct. Runtime and platform
+  controls remain outside the Markdown playbook.
+- Rules have a primary owner. Deterministic checks validate only properties they can
+  observe rather than standing in for judgment.
+
+This repository uses the same separation in its own maintenance: `AGENTS.md` routes work,
+`PROJECT_AGENT_CONTEXT.md` records current local facts, `MAINTAINER_MEMORY.md` holds
+reviewed advisory lessons, and `docs/decisions/` preserves consequential history. That
+separation demonstrates the model; consumer requirements come from the adoption documents
+and templates, not from copying this repository's exact maintenance layout.
 
 ## What it covers
 
@@ -31,25 +80,19 @@ The contract is intentionally simple: any agent that can read repository Markdow
 - secrets, privacy, licensing, dependencies, and reproducibility;
 - proportional quality gates, CI, branch policy, releases, and operations;
 - authorization boundaries for pushes, releases, deployments, and external communication;
-- adoption templates plus optional, project-selected technology profiles.
+- adoption templates and optional, project-selected technology profiles.
 
-It does not create support promises, choose a license for a consumer project, or authorize an agent to mutate external state.
+The core does not replace legal advice, choose a consumer project's license or technology
+stack, deeply validate a technology without an applicable profile, create support promises,
+or authorize external actions.
 
-## Choose how to use it
+## Try it or keep it available
 
-- **Inspect one repository once — separate local checkout.** No files are added to the
-  target repository; give the agent both paths explicitly.
-- **Keep the playbook in every ordinary clone — squashed Git subtree.** This is the
-  recommended public default. Updates are normal reviewable commits, but upstream history
-  is squashed.
-- **Keep exact upstream provenance — Git submodule.** This keeps the consumer diff small,
-  but every local, cloud, and CI checkout must initialize submodules recursively.
+### Try a read-only audit
 
-## Quick start
-
-### One-off audit
-
-From the directory containing the target repository, clone an immutable playbook release:
+From the directory containing the target repository, clone a tagged playbook release
+beside it. Resolve the tag to a specific commit and record that commit as the immutable
+reference:
 
 ```bash
 git clone \
@@ -58,87 +101,42 @@ git clone \
   oss-agent-playbook
 ```
 
-Give the agent the local paths to both repositories and ask it to follow
-`oss-agent-playbook/docs/agent-workflow.md`. Name both paths explicitly so the audit does
-not depend on a later remote fetch. A read-only audit does not authorize the agent to edit,
-push, publish, or change repository settings.
+Then give a file-aware agent both local paths and a bounded task:
 
-### Continuous use
-
-Run the following from a clean target-repository worktree. Pin the playbook as a normal
-dependency; do not track `main`.
-
-#### Option A: squashed subtree
-
-```bash
-git subtree add \
-  --prefix=.agent/oss-playbook \
-  https://github.com/segfault-stack/oss-agent-playbook.git \
-  v0.6.0 \
-  --squash
+```text
+Using <PLAYBOOK_PATH>/docs/agent-workflow.md, audit <TARGET_REPOSITORY_PATH> without changing
+files. Report the three highest-priority findings with evidence, important uncertainties,
+and the checks that would verify any proposed change.
 ```
 
-#### Option B: submodule
+This adds nothing to the target repository and authorizes no edit, push, release, message,
+or repository-setting change.
 
-```bash
-git submodule add \
-  https://github.com/segfault-stack/oss-agent-playbook.git \
-  .agent/oss-playbook
-git -C .agent/oss-playbook checkout v0.6.0
-git add .gitmodules .agent/oss-playbook
-```
+### Keep it available for repeated use
 
-Clone a submodule consumer recursively:
+For later audits and improvement passes, keep a playbook revision pinned to a resolved
+commit visible to the repository and route agents to it. The supported delivery choices are a squashed Git
+subtree (the public default), a Git submodule, or a reviewed vendored snapshot. Each has
+different checkout and provenance tradeoffs; none updates automatically.
 
-```bash
-git clone --recurse-submodules <CONSUMER_REPOSITORY_URL>
-```
+Follow the [adoption guide](ADOPTION.md) for commands, project-context templates, profile
+selection, updates, verification, and rollback. Merge its routing templates into existing
+instructions rather than overwriting project-specific guidance.
 
-Initialize or repair an existing checkout with:
-
-```bash
-git submodule update --init --recursive
-```
-
-#### Route agents to the pinned files
-
-After either import, merge these templates into the target repository root:
-
-- `.agent/oss-playbook/templates/AGENTS.consumer.md` as `AGENTS.md` for Codex and
-  vendor-neutral routing;
-- `.agent/oss-playbook/templates/CLAUDE.consumer.md` as `CLAUDE.md` for Claude Code;
-- `.agent/oss-playbook/templates/PROJECT_AGENT_CONTEXT.md` as
-  `PROJECT_AGENT_CONTEXT.md` for verified project facts and available and enabled profiles.
-
-Copy them directly only when the corresponding root file does not exist. Otherwise merge
-the routing into the established project instructions instead of overwriting them. Fill in
-every required project-context field and record the immutable ref, resolved commit, and
-delivery mode.
-
-Verify the imported playbook itself:
+After setup, verify the imported playbook:
 
 ```bash
 test -f .agent/oss-playbook/README.md
 python3 .agent/oss-playbook/scripts/check_docs.py
 ```
 
-Success prints `Documentation checks passed` with the number of Markdown files in the
-pinned release. Then give a file-aware agent a bounded first task, for example:
-
-```text
-Follow AGENTS.md and read PROJECT_AGENT_CONTEXT.md plus the pinned playbook.
-Audit this repository without changing files. State the playbook ref, profiles actually
-available in that pinned revision, and profiles enabled by the project. Do not describe an
-absent profile as disabled or not enabled. Then report the three highest-priority findings
-with evidence.
-```
-
-See the [adoption guide](ADOPTION.md) for updates, rollback, vendored snapshots, detailed
-routing rules, and the complete adoption checklist.
+Success prints `Documentation checks passed` with the number of Markdown files in that
+pinned revision. Consumer repositories must separately run the checks that cover their own
+code, behavior, and enabled profiles.
 
 ## Playbook map
 
-- [Adoption](ADOPTION.md) — subtree, submodule, snapshot, routing, updates, and rollback.
+- [Adoption](ADOPTION.md) — one-off use, connected delivery, routing, updates, and rollback.
 - [Principles](docs/principles.md) — scope, positioning, evidence, and restraint.
 - [Audit and priorities](docs/audit-and-priorities.md) — how to inspect a repository and order work.
 - [Public interface](docs/public-interface.md) — metadata, documentation, and community surfaces.
@@ -146,11 +144,9 @@ routing rules, and the complete adoption checklist.
 - [README presentation](docs/readme-presentation.md) — prose, tables, visuals, badges, and rendering.
 - [Security and reproducibility](docs/security-and-reproducibility.md) — secrets, privacy, dependencies, builds, and supply chain.
 - [Engineering and releases](docs/engineering-and-releases.md) — quality gates, CI, branches, operations, and releases.
-- [Agent workflow](docs/agent-workflow.md) — authorization, execution, verification, and handoff.
+- [Agent workflow](docs/agent-workflow.md) — authorization, execution, verification, review, and handoff.
 - [Checklists](docs/checklists.md) — publication and maintenance review.
-- [Technology profiles](profiles/README.md) — project-selected, task-loaded technology overlays.
-
-The playbook separates hard safety and authorization boundaries from recommended defaults and optional maturity practices. Project-specific decisions may specialize defaults, but they must not silently conceal security, privacy, legal, or data-loss risk.
+- [Technology profiles](profiles/README.md) — project-selected, task-activated technology overlays.
 
 ## Contributing and support
 
@@ -168,8 +164,14 @@ python3 scripts/check_docs.py
 
 ## Versioning
 
-Tags use semantic versioning. Before `1.0.0`, minor releases may contain breaking policy or integration changes. After `1.0.0`, moving or renaming a routed document, changing adapter behavior, or materially reversing a normative default requires a major release. Consumer repositories should review updates like dependency changes rather than tracking a mutable branch.
+Tags use semantic versioning. Before `1.0.0`, minor releases may contain breaking guidance
+or integration changes. After `1.0.0`, moving or renaming a routed document, changing
+adapter behavior, or materially reversing a normative default requires a major release.
+Consumer repositories should review updates like dependency changes instead of tracking a
+mutable branch.
 
 ## License
 
-The playbook, templates, profiles, and supporting scripts are dedicated to the public domain under [CC0 1.0 Universal](LICENSE). They may be copied, modified, and redistributed without attribution to the extent allowed by law.
+The playbook, templates, profiles, and supporting scripts are dedicated to the public
+domain under [CC0 1.0 Universal](LICENSE). They may be copied, modified, and redistributed
+without attribution to the extent allowed by law.
