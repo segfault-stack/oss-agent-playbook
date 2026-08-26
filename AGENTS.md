@@ -104,4 +104,8 @@ If no automated documentation checks exist, say so in the handoff rather than cl
 
 Write concise English intended for agents and maintainers. Use short sections, explicit conditions, and imperative language. Define uncommon terms on first use. Avoid marketing copy, badge walls, decorative diagrams, and framework-specific tutorials.
 
+Keep all repository-facing text in English, including proposed wording, commit messages,
+release notes, and issue or pull-request text. Conversation with a human may use any
+language, but present proposed repository text in the exact English form intended for use.
+
 Report state only when it affects the outcome, the next action, or a maintainer decision.

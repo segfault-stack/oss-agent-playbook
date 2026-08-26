@@ -62,6 +62,11 @@ git subtree pull \
 
 Update the pin recorded in `PROJECT_AGENT_CONTEXT.md` in the same dependency-style change. Reconcile adapter or profile changes and run the consumer repository's relevant checks. Roll back a problematic import by reverting that update commit.
 
+When an update encounters a conflicting existing tag, do not force-update, prune, or delete
+it automatically. Compare the local and remote object IDs and verify their provenance
+before attributing the conflict. Report the evidence and preserve the local tag until a
+maintainer decides how to reconcile it.
+
 Do not edit the imported subtree in the consumer repository. Propose universal changes upstream; keep project decisions in local instructions and context.
 
 ## Supported alternative: Git submodule
