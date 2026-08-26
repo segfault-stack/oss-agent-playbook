@@ -29,9 +29,10 @@ label and an explicit comment:
 - `status: accepted` — implementation is welcome within the stated scope;
 - `status: blocked` — accepted work is waiting on a named dependency or decision.
 
-An accepted issue makes an implementation eligible for review; it does not guarantee
-merge. If implementation materially exceeds the accepted scope, return to the issue before
-continuing.
+`status: accepted` is a scope decision, independent of whether the issue is open or closed.
+When reporting it, state both facts explicitly, for example: “Issue open; scope status
+accepted.” It makes an implementation eligible for review; it does not guarantee merge. If
+implementation materially exceeds the accepted scope, return to the issue before continuing.
 
 Comment before starting substantial work so maintainers and other contributors can avoid
 duplicating effort. A contributor without write access may have one active contribution
