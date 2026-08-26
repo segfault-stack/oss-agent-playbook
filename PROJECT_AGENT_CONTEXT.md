@@ -20,7 +20,7 @@ This repository dogfoods the OSS Agent Playbook directly: its root documents are
 
 ## Publication and support
 
-- Publication boundary: Markdown guidance, consumer templates, technology-profile scaffolding, and the documentation checker.
+- Publication boundary: Markdown guidance, consumer templates, technology profiles and their scaffolding, and the documentation checker.
 - Supported versions: the latest tagged pre-1.0 release; fixes land on `main` before the next release.
 - Contributions and support: public GitHub issues and pull requests under `CONTRIBUTING.md` and `SUPPORT.md`.
 - Sensitive reports: GitHub private vulnerability reporting as described in `SECURITY.md`.
@@ -52,7 +52,7 @@ This repository dogfoods the OSS Agent Playbook directly: its root documents are
 
 ## Project-specific decisions
 
-- Universal guidance lives in `docs/`; ecosystem guidance lives in `profiles/`.
+- Universal guidance lives in `docs/`; artifact- and interface-specific technology guidance lives in `profiles/`.
 - The repository uses its own root `AGENTS.md` and `CLAUDE.md` instead of importing itself recursively.
 - Empty Discussions, Wiki, and Projects remain disabled until an owner and active use case exist.
 - Shared maintainer memory is public, Git-tracked, and advisory. `MAINTAINER_MEMORY.md` indexes accepted lessons; `docs/decisions/` owns consequential decision history.

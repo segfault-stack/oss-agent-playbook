@@ -88,9 +88,9 @@ New profiles merge as `draft`. Promotion to `recommended` requires a later focus
 request showing verification across at least two representative repositories or project
 types. Profile authors do not automatically become maintainers or permanent owners.
 
-Whole ecosystem profiles are substantial research tasks and should not be labeled
-`good first issue`. Reserve that label for narrow, accepted work with explicit boundaries
-and verification.
+Do not propose a whole ecosystem as one profile. Split independently applicable concerns
+by the artifacts or interfaces they own before scope acceptance. Reserve `good first issue`
+for narrow, accepted work with explicit boundaries and verification.
 
 ## Moderation
 

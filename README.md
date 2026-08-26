@@ -24,11 +24,6 @@ This playbook separates those layers:
 
 The contract is intentionally simple: any agent that can read repository Markdown and project-local instructions can apply the playbook. It does not require a particular model, programming language, forge, CI provider, or deployment platform.
 
-The core and profile framework are usable now. The first technology profile,
-[`docker-container-images`](profiles/docker-container-images/PROFILE.md), is available as
-a draft. Under the profile lifecycle, each new profile starts as a draft and becomes
-recommended only after representative project validation.
-
 ## What it covers
 
 - read-only audit and risk-based prioritization;
@@ -36,17 +31,19 @@ recommended only after representative project validation.
 - secrets, privacy, licensing, dependencies, and reproducibility;
 - proportional quality gates, CI, branch policy, releases, and operations;
 - authorization boundaries for pushes, releases, deployments, and external communication;
-- adoption templates plus a schema and lifecycle for future technology profiles.
+- adoption templates plus optional, project-selected technology profiles.
 
 It does not create support promises, choose a license for a consumer project, or authorize an agent to mutate external state.
 
 ## Choose how to use it
 
-| Need | Delivery mode | Main trade-off |
-| --- | --- | --- |
-| Inspect one repository once | Separate local checkout | No files are added to the target repository; the agent must be given both paths explicitly. |
-| Keep the playbook available in every ordinary clone | Squashed Git subtree (recommended public default) | Updates produce normal reviewable commits, but upstream history is squashed. |
-| Keep exact upstream provenance and a small consumer diff | Git submodule (fully supported) | Every local, cloud, and CI checkout must initialize submodules recursively. |
+- **Inspect one repository once — separate local checkout.** No files are added to the
+  target repository; give the agent both paths explicitly.
+- **Keep the playbook in every ordinary clone — squashed Git subtree.** This is the
+  recommended public default. Updates are normal reviewable commits, but upstream history
+  is squashed.
+- **Keep exact upstream provenance — Git submodule.** This keeps the consumer diff small,
+  but every local, cloud, and CI checkout must initialize submodules recursively.
 
 ## Quick start
 

@@ -5,7 +5,8 @@ This is a community-maintained documentation project without hosted support, res
 - Use a GitHub issue for unclear, outdated, contradictory, or unsafe guidance.
 - Use a core proposal for new universal guidance, adoption behavior, or cross-document
   changes.
-- Use a profile request for technology-specific practices that should apply across projects.
+- Use a profile request for a cross-project problem at a named technology-specific artifact
+  or interface.
 - Use a question issue for a narrow question about applying or contributing to this
   playbook.
 - Use a pull request for a concrete reviewed improvement.
